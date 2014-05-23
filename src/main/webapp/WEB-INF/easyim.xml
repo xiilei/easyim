@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<easyim-configuration>
+
+	<property name="logfile">log4j.properties</property>
+	
+	<property name="session_timeout_mins">120</property>
+	
+	<property name="timer_interval_mins">60</property>
+	
+	<property name="maxwaittime_millis">60</property>
+	
+	<a name="1">asdadsa</a>
+<!-- <property name="dateformat">yyyy-MM-dd HH:mm:ss</property> -->
+<!-- <property name="queue_capacity">10</property> -->
+</easyim-configuration>

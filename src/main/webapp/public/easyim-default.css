@@ -1,0 +1,94 @@
+.easyim-main{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	font-family:'微软雅黑',Arial;
+	width:600px;
+	height:412px;
+	border:1px black solid;
+}
+/*header*/
+.easyim-header{
+	border-bottom:1px black solid;
+	background:#444;
+	height:40px;
+	line-height:40px;
+	color:#FFF;
+	text-indent: 10px;
+	font-size:14px;
+}
+
+.easyim-header .easyim-user{
+	color:green;
+}
+
+/* 聊天主窗口*/
+.easyim-im{
+	border-right:1px black solid;
+	width:430px;
+	height:360px;
+	float:left;
+}
+.easyim-im-msg{
+	height:281px;
+	overflow-y:auto;
+	margin:6px 0 6px 0;
+}
+/*聊天消息*/
+.easyim-im-item{
+	text-indent: 5px;
+}
+.easyim-im-item .easyim-item-other{
+	color:blue;
+}
+.easyim-im-item .easyim-item-self{
+	color:green;
+}
+.easyim-im-item p{
+	margin:0;
+	padding:2px;
+}
+/*输入框*/
+.easyim-im-sendbox{
+	border-top:1px black solid;
+	height:50px;
+	padding-top:10px;
+}
+
+.easyim-input{
+	border:1px black solid;
+	width:75%;
+	margin-left:10px;
+}
+.easyim-send{
+	border:1px black solid;
+	cursor: pointer;
+	margin-right:10px;
+}
+
+
+/*在线列表*/
+.easyim-online{
+	width:165px;
+	height:360px;
+	margin-left:435px;
+	overflow-y:auto;
+}
+.easyim-online-item{
+	text-indent:10px;
+	margin:5px;
+	cursor: pointer;
+}
+.easyim-online-item-over{
+	background:silver;
+	border:1px black dotted;
+	color:#FFF;
+	font-size:14px;
+	
+}
+/*footer*/
+.easyim-footer{
+	height:10px;
+	background:#444;
+	border-top:1px black solid;
+}
