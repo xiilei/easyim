@@ -1,20 +1,22 @@
-package com.easyim.listener;
+package com.github.xiilei.easyim.listener;
 
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.easyim.core.Config;
-import com.easyim.core.SessionManager;
-import com.easyim.util.Log;
-
+import com.github.xiilei.easyim.core.Config;
+import com.github.xiilei.easyim.core.SessionManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 /**
  * easyim 启动加载监听
  * @author xl
  */
 @WebListener
 public class InitListener implements ServletContextListener{
+    
+    public static final Logger logger = LogManager.getLogger(InitListener.class);
     
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -25,7 +27,7 @@ public class InitListener implements ServletContextListener{
     	
     	SessionManager.getInstance().start(); 
     	
-    	Log.info("easyim 启动,webPath:"+webPath);
+    	logger.info("easyim 启动,webPath:"+webPath);
     }
     
     @Override
@@ -33,7 +35,7 @@ public class InitListener implements ServletContextListener{
     	
     	SessionManager.getInstance().stop();
     	
-    	Log.info("easyim 停止");
+    	logger.info("easyim 停止");
     	
     
     }

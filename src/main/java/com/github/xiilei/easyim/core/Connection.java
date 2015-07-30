@@ -1,9 +1,10 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.util.Iterator;
 import java.util.List;
 
-import com.easyim.util.Log;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 /**
  * 保持与client的连接
@@ -11,6 +12,7 @@ import com.easyim.util.Log;
  *
  */
 public class Connection {
+                    public static final Logger logger = LogManager.getLogger(Connection.class);
 	
 	/**
 	 * 消息队列容量
@@ -77,9 +79,9 @@ public class Connection {
 	public void onMessage(Message message){
 		
 		if (!mqueue.add(message)) {
-			Log.warn("Connectionm,onMessage:添加超时");
+			logger.warn("Connectionm,onMessage:添加超时");
 		}else {
-			Log.debug("("+message.getStime()+")添加消息:sid:"+message.getSid()+",gid:"+message.getGid()+",text:"+message.getText()+",sname:"+message.getSname());
+			logger.debug("("+message.getStime()+")添加消息:sid:"+message.getSid()+",gid:"+message.getGid()+",text:"+message.getText()+",sname:"+message.getSname());
 		}
 		
 	}
@@ -92,7 +94,7 @@ public class Connection {
 			Message message = Message.createSys(type,session.getInfoString());
 			Dispatcher.getInstance().broadcast(message);
 		} catch (Exception e) {
-			Log.warn("Connection:,tipOnline,event:"+type.toString()+",发送失败");
+			logger.warn("Connection:,tipOnline,event:"+type.toString()+",发送失败");
 		}
 	}
 	

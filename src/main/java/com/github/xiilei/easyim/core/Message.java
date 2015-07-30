@@ -1,11 +1,14 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.lang.reflect.Field;
 
-import com.easyim.util.EasyUtil;
-import com.easyim.util.Log;
+import com.github.xiilei.easyim.util.EasyUtil;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 public class Message {
+    
+                    public static final Logger logger = LogManager.getLogger(Message.class);
 	/**
 	 * event 消息类型
 	 */
@@ -146,9 +149,9 @@ public class Message {
 				name = fields[i].get(this);
 				su.append((name == null ? "" : name.toString()));
 			} catch (IllegalArgumentException e) {
-				Log.warn("Message to JSON:不正确的字段:"+fields[i].getName());
+				logger.warn("Message to JSON:不正确的字段:"+fields[i].getName());
 			} catch (IllegalAccessException e) {
-				Log.warn("Message to JSON:不可访问:"+fields[i].getName());
+				logger.warn("Message to JSON:不可访问:"+fields[i].getName());
 			}
 			if (i <fields.length-1) {
 				su.append(fieldName.equals("text") ? "," : "\",");

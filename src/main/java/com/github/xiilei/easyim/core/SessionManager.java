@@ -1,18 +1,22 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.util.Collection;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.easyim.util.EasyUtil;
-import com.easyim.util.Log;
+import com.github.xiilei.easyim.util.EasyUtil;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+
 
 /**
  * Session 管理类(单例)
  * @author xl
  */
 public class SessionManager {
+    
+                    public static final Logger logger = LogManager.getLogger(SessionManager.class);
 	
 	/**
 	 * 缓存实例
@@ -73,7 +77,7 @@ public class SessionManager {
 	public void addSession(Session session){
 		sessions.put(session.getId(), session);
 		sessionCacheDirty = true;
-		Log.info("SessionManager add Session:"+session.getId()+",IP:"+session.getAddress());
+		logger.info("SessionManager add Session:"+session.getId()+",IP:"+session.getAddress());
 	}
 	
 	/**
@@ -101,7 +105,7 @@ public class SessionManager {
 	public void removeSession(Session session){
 		Session nsession = sessions.remove(session.getId());
 		if(nsession!=null){
-			Log.info("SessionManager remove Session:"+nsession.getId()+",IP:"+nsession.getAddress());
+			logger.info("SessionManager remove Session:"+nsession.getId()+",IP:"+nsession.getAddress());
 		}
 		sessionCacheDirty = true;
 		
@@ -149,7 +153,7 @@ public class SessionManager {
 				try {
 					method.invoke(sessionCache[i]);
 				} catch (Exception e) {
-					Log.warn("SessionManager apply invoke 方法执行出错:",e);
+					logger.warn("SessionManager apply invoke 方法执行出错:",e);
 				}
 			}
 	}
@@ -160,7 +164,7 @@ public class SessionManager {
 		}
 		timer = new Timer(false);
 		timer.schedule(new CheckTimerTask(), TIMER_INTERVAL_MILLIS, TIMER_INTERVAL_MILLIS);
-		Log.info("CheckTimerTask started; interval=" + TIMER_INTERVAL_MILLIS + "ms");
+		logger.info("CheckTimerTask started; interval=" + TIMER_INTERVAL_MILLIS + "ms");
 		
 	}
 	
@@ -170,7 +174,7 @@ public class SessionManager {
 			timer = null;
 		}
 		sessions.clear();
-		Log.info("CheckTimerTask stopped");
+		logger.info("CheckTimerTask stopped");
 	}
 	
 	/**
@@ -202,8 +206,8 @@ public class SessionManager {
 			delta = now - lastRun;
 			lastRun=now;
 			getInstance().apply(this);
-			if(Log.getLogger().isDebugEnabled()){
-				Log.debug("CheckTimerTask,时间:"+EasyUtil.dateFormat()+", sessions size:"+sessions.size()+" ,cache size:"+sessionCache.length);
+			if(logger.isDebugEnabled()){
+				logger.debug("CheckTimerTask,时间:"+EasyUtil.dateFormat()+", sessions size:"+sessions.size()+" ,cache size:"+sessionCache.length);
 			}
 		}
 
@@ -211,7 +215,7 @@ public class SessionManager {
 		public void invoke(Session session) {
 			session.less(delta);
 			if(session.isExpired()){
-				Log.info("CheckTimerTask: remove Session");
+				logger.info("CheckTimerTask: remove Session");
 				session.remove();
 			}
 		}

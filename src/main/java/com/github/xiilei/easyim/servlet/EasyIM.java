@@ -1,4 +1,4 @@
-package com.easyim.servlet;
+package com.github.xiilei.easyim.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,14 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.easyim.core.Protocol;
-import com.easyim.core.Session;
-import com.easyim.core.SessionManager;
-import com.easyim.util.Log;
+import com.github.xiilei.easyim.core.Protocol;
+import com.github.xiilei.easyim.core.Session;
+import com.github.xiilei.easyim.core.SessionManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 
 @WebServlet("/im")
 public class EasyIM extends HttpServlet {
+    
+                    public static final Logger logger = LogManager.getLogger(EasyIM.class);
+
 
 	/**
 	 * Constructor of the object.
@@ -39,7 +43,7 @@ public class EasyIM extends HttpServlet {
 		//PrintWriter out = response.getWriter();
 		String event = request.getParameter(Protocol.MSG_EVENT.toString());
 		if(event == null){
-			Log.warn("im,接收到错误的请求,无event 参数");
+			logger.warn("im,接收到错误的请求,无event 参数");
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "No event specified");
 			return;
 		}
@@ -59,7 +63,7 @@ public class EasyIM extends HttpServlet {
 		}else {
 			
 			if (sid == null ) {
-				Log.warn("im,接收到错误的请求,缺少 sid 参数");
+				logger.warn("im,接收到错误的请求,缺少 sid 参数");
 				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Join No sid specified");
 				return;
 			}
@@ -67,7 +71,7 @@ public class EasyIM extends HttpServlet {
 			session = SessionManager.getInstance().getSession(sid);
 			
 			if(session == null){
-				Log.warn("im,Session不存在或者已经失效  id:"+sid);
+				logger.warn("im,Session不存在或者已经失效  id:"+sid);
 				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid or expired id:"+sid);
 				return;
 			}

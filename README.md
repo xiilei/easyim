@@ -1,6 +1,4 @@
 easyim
 ======
 
-easy for web im (ajax longpolling) 
-
-just an exercise,no longer maintaining it
+简单的webim (ajax longpolling) 

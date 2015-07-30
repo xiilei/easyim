@@ -1,4 +1,4 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 /**
  * easyim protocol

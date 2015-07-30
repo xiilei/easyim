@@ -1,8 +1,9 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.io.File;
 
-import com.easyim.util.Log;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 /**
  * 全局配置管理
@@ -10,6 +11,8 @@ import com.easyim.util.Log;
  *
  */
 public class Config {
+                    
+                    public static final Logger logger = LogManager.getLogger(Config.class);
 
 	private static final String PROPERTIES_FILE = "easyim.xml";
 	
@@ -24,7 +27,6 @@ public class Config {
 		try {
 			properties.load(Config.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE));
 			properties.setProperty("webPath", webPath+File.separator);
-			Log.init();
 		} catch (Exception e) {
 			e.printStackTrace();
 			//这里的错误处理(Log尚未初始化....)
@@ -72,7 +74,7 @@ public class Config {
 		try {
 			return Long.parseLong(value);
 		} catch (Exception e) {
-			Log.warn("Config:无法将"+name+"指定参数值转为Long");
+			logger.warn("Config:无法将"+name+"指定参数值转为Long");
 			return i;
 		}
 	}

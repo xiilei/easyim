@@ -1,11 +1,12 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import com.easyim.util.Log;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 /**
  * 阻塞消息队列(仅是对LinkedBlockingQueue的简单封装)
@@ -13,6 +14,8 @@ import com.easyim.util.Log;
  * 
  */
 public class MessageQueue {
+    
+                    public static final Logger logger = LogManager.getLogger(MessageQueue.class);
 	
 	/**
 	 * 无新消息等待时间
@@ -35,7 +38,7 @@ public class MessageQueue {
 		try {
 			res=queue.offer(m, MAXWAITTIME_MILLIS, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			Log.warn("MessageQueue,add异常:",e);			
+			logger.warn("MessageQueue,add异常:",e);			
 			//e.printStackTrace();
 		}
 		return res;
@@ -46,7 +49,7 @@ public class MessageQueue {
 		try {
 			m = queue.poll(MAXWAITTIME_MILLIS, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			Log.warn("MessageQueue,poll异常:", e);
+			logger.warn("MessageQueue,poll异常:", e);
 			//e.printStackTrace();
 		}
 		return m;

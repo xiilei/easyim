@@ -1,8 +1,7 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
@@ -14,9 +13,12 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-import com.easyim.util.Log;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 public class XMLConfig {
+    
+                    public static final Logger logger = LogManager.getLogger(XMLConfig.class);
 
 	private HashMap<String, String> properties = new HashMap<String, String>();
 	
@@ -43,17 +45,17 @@ public class XMLConfig {
 			
 			@Override
 			public void warning(SAXParseException exception) throws SAXException {
-				Log.warn("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
+				logger.warn("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
 			}
 			
 			@Override
 			public void fatalError(SAXParseException exception) throws SAXException {
-				Log.fatal("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
+				logger.fatal("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
 			}
 			
 			@Override
 			public void error(SAXParseException exception) throws SAXException {
-				Log.error("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
+				logger.error("配置文件解析出错:行"+exception.getLineNumber()+","+exception.getMessage());
 			}
 		});
 	}

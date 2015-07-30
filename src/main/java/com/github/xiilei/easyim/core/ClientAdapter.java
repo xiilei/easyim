@@ -1,4 +1,4 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,15 +7,17 @@ import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.easyim.util.EasyUtil;
-import com.easyim.util.Log;
-
+import com.github.xiilei.easyim.util.EasyUtil;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 /**
  * 将消息输出到客户端
  * @author xl
  *
  */
 public class ClientAdapter {
+                    
+                    public static final Logger logger = LogManager.getLogger(ClientAdapter.class);
 	
 	private HttpServletResponse response;
 	
@@ -52,7 +54,7 @@ public class ClientAdapter {
 		try {
 			out = response.getWriter();
 		} catch (IOException e) {
-			Log.warn("ClientAdaper,start,输出流异常");
+			logger.warn("ClientAdaper,start,输出流异常");
 			//e.printStackTrace();
 		}
 		

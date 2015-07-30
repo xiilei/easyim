@@ -1,6 +1,7 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
-import com.easyim.util.Log;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 /**
  * 
@@ -8,6 +9,7 @@ import com.easyim.util.Log;
  *
  */
 public class Dispatcher {
+                    public static final Logger logger = LogManager.getLogger(Dispatcher.class);
 	
 	private static Dispatcher instance;
 	
@@ -49,7 +51,7 @@ public class Dispatcher {
 		
 		Session to = SessionManager.getInstance().getSession(gid);
 		if(to ==null){
-			Log.warn("Dispatcher,指定接收session不存在,或已失效");
+			logger.warn("Dispatcher,指定接收session不存在,或已失效");
 			//离线消息处理...
 		}else{
 			to.getConnection().onMessage(message);

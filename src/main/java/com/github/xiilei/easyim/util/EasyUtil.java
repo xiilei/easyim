@@ -1,4 +1,4 @@
-package com.easyim.util;
+package com.github.xiilei.easyim.util;
 
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -8,10 +8,15 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
-import com.easyim.core.Config;
-import com.easyim.core.Protocol;
+import com.github.xiilei.easyim.core.Config;
+import com.github.xiilei.easyim.core.Protocol;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 public class EasyUtil {
+    
+                    public static final Logger logger = LogManager.getLogger(EasyUtil.class);
 	
 	private static SimpleDateFormat dateFormat = null;
 	
@@ -64,7 +69,7 @@ public class EasyUtil {
 			return new String(oldStr.getBytes("ISO-8859-1"),"UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			//e.printStackTrace();
-			Log.warn("EasyUtil,不支持的字符集");
+			logger.warn("EasyUtil,不支持的字符集");
 		}
 		return null;
 	}

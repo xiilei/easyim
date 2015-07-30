@@ -1,9 +1,9 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.easyim.util.EasyUtil;
+import com.github.xiilei.easyim.util.EasyUtil;
 
 /**
  * 会话核心类,代表一个用户连接

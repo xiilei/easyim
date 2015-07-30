@@ -1,4 +1,4 @@
-package com.easyim.core;
+package com.github.xiilei.easyim.core;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -7,10 +7,12 @@ import java.net.URLDecoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.easyim.util.EasyUtil;
-import com.easyim.util.Log;
+import com.github.xiilei.easyim.util.EasyUtil;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 
 public class Controller {
+                    public static final Logger logger = LogManager.getLogger(Controller.class);
 	
 	private Session session;
 	
@@ -55,11 +57,11 @@ public class Controller {
 		}else if (event.equals(Protocol.EVENT_JOIN.toString())){
 			doJoin();
 		}else {
-			Log.warn("Controller,非法的event:"+event);
+			logger.warn("Controller,非法的event:"+event);
 			try {
 				session.getResponse().sendError(HttpServletResponse.SC_BAD_REQUEST, "unkonw event"+event);
 			} catch (IOException e) {
-				Log.warn("Controller,输出流异常:",e);
+				logger.warn("Controller,输出流异常:",e);
 				//e.printStackTrace();
 			}
 		}
@@ -76,7 +78,7 @@ public class Controller {
 				session.setUname(URLDecoder.decode(EasyUtil.getNewString(sname),"UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				//e.printStackTrace();
-				Log.info("Controller,不支持的字符集");
+				logger.info("Controller,不支持的字符集");
 			}
 		}
 		session.add();
@@ -96,7 +98,7 @@ public class Controller {
 				Dispatcher.getInstance().unicast(message, gid);
 			}
 		} catch (Exception e) {
-			Log.warn("Controller,添加消息失败sid:"+message.getSid(),e);
+			logger.warn("Controller,添加消息失败sid:"+message.getSid(),e);
 		}
 		
 	}
