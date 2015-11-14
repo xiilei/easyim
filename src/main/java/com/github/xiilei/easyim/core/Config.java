@@ -12,7 +12,7 @@ import org.apache.log4j.LogManager;
  */
 public class Config {
                     
-                    public static final Logger logger = LogManager.getLogger(Config.class);
+    public static final Logger logger = LogManager.getLogger(Config.class);
 
 	private static final String PROPERTIES_FILE = "easyim.xml";
 	

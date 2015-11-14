@@ -19,8 +19,7 @@ import org.apache.log4j.LogManager;
 @WebServlet("/im")
 public class EasyIM extends HttpServlet {
     
-                    public static final Logger logger = LogManager.getLogger(EasyIM.class);
-
+    public static final Logger logger = LogManager.getLogger(EasyIM.class);
 
 	/**
 	 * Constructor of the object.

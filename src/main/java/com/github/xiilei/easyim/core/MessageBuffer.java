@@ -13,10 +13,9 @@ import org.apache.log4j.LogManager;
  * @author xl
  * 
  */
-public class MessageQueue {
+public class MessageBuffer {
     
-                    public static final Logger logger = LogManager.getLogger(MessageQueue.class);
-	
+    public static final Logger logger = LogManager.getLogger(MessageBuffer.class);
 	/**
 	 * 无新消息等待时间
 	 */
@@ -25,11 +24,11 @@ public class MessageQueue {
 	
 	private LinkedBlockingQueue<Message> queue ;
 
-	public MessageQueue(){
+	public MessageBuffer(){
 		queue = new LinkedBlockingQueue<Message>();
 	}
 	
-	public MessageQueue(int capacity){
+	public MessageBuffer(int capacity){
 		queue = new LinkedBlockingQueue<Message>(capacity);
 	}
 	
@@ -38,7 +37,7 @@ public class MessageQueue {
 		try {
 			res=queue.offer(m, MAXWAITTIME_MILLIS, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			logger.warn("MessageQueue,add异常:",e);			
+			logger.warn("MessageBuffer,add异常:",e);			
 			//e.printStackTrace();
 		}
 		return res;
@@ -49,7 +48,7 @@ public class MessageQueue {
 		try {
 			m = queue.poll(MAXWAITTIME_MILLIS, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
-			logger.warn("MessageQueue,poll异常:", e);
+			logger.warn("MessageBuffer,poll异常:", e);
 			//e.printStackTrace();
 		}
 		return m;

@@ -18,7 +18,7 @@ import org.apache.log4j.LogManager;
 
 public class XMLConfig {
     
-                    public static final Logger logger = LogManager.getLogger(XMLConfig.class);
+    public static final Logger logger = LogManager.getLogger(XMLConfig.class);
 
 	private HashMap<String, String> properties = new HashMap<String, String>();
 	

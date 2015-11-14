@@ -16,7 +16,7 @@ import org.apache.log4j.LogManager;
  */
 public class SessionManager {
     
-                    public static final Logger logger = LogManager.getLogger(SessionManager.class);
+    public static final Logger logger = LogManager.getLogger(SessionManager.class);
 	
 	/**
 	 * 缓存实例

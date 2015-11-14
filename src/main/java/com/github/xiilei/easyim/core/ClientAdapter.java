@@ -17,8 +17,8 @@ import org.apache.log4j.LogManager;
  */
 public class ClientAdapter {
                     
-                    public static final Logger logger = LogManager.getLogger(ClientAdapter.class);
-	
+    public static final Logger logger = LogManager.getLogger(ClientAdapter.class);
+
 	private HttpServletResponse response;
 	
 	private PrintWriter out;

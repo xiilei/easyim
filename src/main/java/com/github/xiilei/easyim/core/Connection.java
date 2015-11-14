@@ -12,7 +12,7 @@ import org.apache.log4j.LogManager;
  *
  */
 public class Connection {
-                    public static final Logger logger = LogManager.getLogger(Connection.class);
+    public static final Logger logger = LogManager.getLogger(Connection.class);
 	
 	/**
 	 * 消息队列容量
@@ -22,7 +22,7 @@ public class Connection {
 	/**
 	 * 无消息最长等待时间
 	 */
-	private MessageQueue mqueue = new MessageQueue(QUEUE_CAPACITY);
+	private MessageBuffer mqueue = new MessageBuffer(QUEUE_CAPACITY);
 	
 	private Session session;
 	

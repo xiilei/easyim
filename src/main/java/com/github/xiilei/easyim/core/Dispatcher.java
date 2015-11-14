@@ -9,7 +9,7 @@ import org.apache.log4j.LogManager;
  *
  */
 public class Dispatcher {
-                    public static final Logger logger = LogManager.getLogger(Dispatcher.class);
+    public static final Logger logger = LogManager.getLogger(Dispatcher.class);
 	
 	private static Dispatcher instance;
 	

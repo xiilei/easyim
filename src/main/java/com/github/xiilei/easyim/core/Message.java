@@ -8,7 +8,7 @@ import org.apache.log4j.LogManager;
 
 public class Message {
     
-                    public static final Logger logger = LogManager.getLogger(Message.class);
+    public static final Logger logger = LogManager.getLogger(Message.class);
 	/**
 	 * event 消息类型
 	 */

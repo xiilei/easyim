@@ -12,7 +12,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 
 public class Controller {
-                    public static final Logger logger = LogManager.getLogger(Controller.class);
+    public static final Logger logger = LogManager.getLogger(Controller.class);
 	
 	private Session session;
 	
